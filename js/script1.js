@@ -1,12 +1,5 @@
 d3.json("/Melbourne_housing_avg_pricing.json").then(function(data) {
     console.log(data);
-    
-    d3.select('.viz').selectAll('div')
-        .data(data)
-        .enter()
-        .append('div')
-        .text(function(d) {return d.Suburb});
-    
     console.log(d3.max(data, function(d) {return d.Avg_price}));
     
     var ydata = [],
@@ -71,7 +64,7 @@ d3.json("/Melbourne_housing_avg_pricing.json").then(function(data) {
             .attr('y', function (d) {return height - yScale(d)});
     
     yGuide = d3.select('.bar svg').append('g')
-            .attr('transform', 'translate(55,' + margin.top + ')')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
             .call(yAxisTicks);
 
     xGuide = d3.select('.bar svg').append('g')
